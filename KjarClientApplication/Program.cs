@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Text;
@@ -20,9 +21,26 @@ namespace KjarClientApplication
             var username = "wbadmin";  // replace with your username
             var password = "wbadmin";  // replace with your password
 
-            await InvokeDrl(url, username, password);
-            url = "http://localhost:8080/kie-server/services/rest/server/containers/TriageSample_1.0.0-SNAPSHOT/dmn";
-            await InvokeDmn(url, username, password);
+            //  await InvokeDrl(url, username, password);
+            // url = "http://localhost:8080/kie-server/services/rest/server/containers/TriageSample_1.0.0-SNAPSHOT/dmn";
+            // await InvokeDmn(url, username, password);
+            string json = "{your JSON string here}";
+            using (StreamReader r = new StreamReader(@"./ExpectedResponses/" + "response" + ".json"))
+            {
+                json = r.ReadToEnd();
+            }
+
+            // Deserialize the JSON string to the RootObject
+            var responseObject = JsonConvert.DeserializeObject<RootObject>(json);
+
+            // Access the specific result
+            var firstResultEntry = responseObject.result.dmnEvaluationResult.decisionResults.FirstOrDefault();
+            var result = firstResultEntry.Value.result;
+
+            // Print the result
+            Console.WriteLine("Description: " + result.description);
+            Console.WriteLine("Rule ID: " + result.ruleID);
+            Console.WriteLine("Workbasket ID: " + result.workbasketID);
         }
 
         private static async Task InvokeDrl(string url, string username, string password)

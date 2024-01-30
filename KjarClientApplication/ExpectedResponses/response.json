@@ -1,0 +1,55 @@
+{
+  "type": "SUCCESS",
+  "msg": "OK from container 'DXC.LM.SDK.KJAR.ICOS-rules-new'",
+  "result": {
+    "dmn-evaluation-result": {
+      "messages": [],
+      "model-namespace": "https://kiegroup.org/dmn/_647C28A1-46F2-4DE6-9927-329CEE883078",
+      "model-name": "WorkbasketAssignment",
+      "decision-name": [],
+      "dmn-context": {
+        "Assign Workbasket": {
+          "description": "CWSAmlin_WB16 Aviation War Workbasket",
+          "ruleName": "",
+          "ruleID": "ICOS001",
+          "workbasketID": "41a8f296-01a9-4c57-862b-74df81219a50"
+        },
+        "insurer": {
+          "references": {
+            "underwriterClaimReference1": "S42SD4"
+          },
+          "partyDetails": {
+            "market": "LLOYDS",
+            "participationBaseCode": "LEAD",
+            "companyOrSyndicateCode": "2489"
+          }
+        },
+        "riskCode": "B",
+        "transactionReserves": [
+          {
+            "originalCurrency": "CAD",
+            "incurredAmount": 1000
+          },
+          {
+            "originalCurrency": "EUR",
+            "incurredAmount": 1000
+          }
+        ]
+      },
+      "decision-results": {
+        "_0123BB4B-F408-4D1E-A9D2-97C92076E105": {
+          "messages": [],
+          "decision-id": "_0123BB4B-F408-4D1E-A9D2-97C92076E105",
+          "decision-name": "Assign Workbasket",
+          "result": {
+            "description": "CWSAmlin_WB16 Aviation War Workbasket",
+            "ruleName": "",
+            "ruleID": "ICOS001",
+            "workbasketID": "41a8f296-01a9-4c57-862b-74df81219a50"
+          },
+          "status": "SUCCEEDED"
+        }
+      }
+    }
+  }
+}
